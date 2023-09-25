@@ -12,6 +12,7 @@ public class DayCycle : MonoBehaviour
     
     public bool day;
     public float a;
+
     SpriteRenderer sr;
     public Color night;
     // Start is called before the first frame update
