@@ -30,7 +30,7 @@ public class cattle_script : MonoBehaviour
         in_ufo = false;
     }
 
-    //hej
+    
     void Update()
     {
 
