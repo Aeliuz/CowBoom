@@ -32,11 +32,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Debug.Log("F pressed");
-            PauseSpawner();
-        }
+      
         timer += Time.deltaTime;
         if (timer >= cooldown && spawnerActive)
         {
@@ -83,8 +79,7 @@ public class Spawner : MonoBehaviour
         else if(!spawnerActive)
         {
 
-            //DayCycle d = FindObjectOfType<DayCycle>();
-            //d.ChangeDayTime();
+         
             timer = 0;
             spawnerActive = true;
         }
@@ -92,7 +87,7 @@ public class Spawner : MonoBehaviour
        
        
 
-        //ActivateUfo();
+      
         
 
 
@@ -104,7 +99,7 @@ public class Spawner : MonoBehaviour
         {
             Debug.Log("deactivating ufo");
             Ufo.SetActive(false);
-            //DayCycle d = FindObjectOfType<DayCycle>();
+          
 
         }
         else
@@ -117,7 +112,7 @@ public class Spawner : MonoBehaviour
             ufo_script.health = 50;
             deaths_flip_flop = false;
             ufo_script.carrying_cattle = false;
-            //ufo_script.restore_health();
+          
         }
     }
 }

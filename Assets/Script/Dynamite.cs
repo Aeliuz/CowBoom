@@ -5,28 +5,32 @@ using UnityEngine.Windows;
 
 public class Dynamite : MonoBehaviour
 {
+    public ParticleSystem explosionParticle;
+    public GameObject fuse;
+
     public float radius;
     public float dynamiteSpeed;
     public float stopTimer;
     public int damage;
     public float timer;
-    public ParticleSystem explosionParticle;
-    public GameObject fuse;
-    public Vector2 position;
-    bool burning = false;
 
+   
+   
+
+    bool burning = false;
     bool hasExploded = false;
     bool ignitiated = false;
 
 
-    AudioSource explosionSound;
+   
     public AudioClip explosionSound2;
-
     AudioSource burningSound;
+    AudioSource explosionSound;
 
 
     Rigidbody2D rb;
-    Transform CurrentTarget;
+
+    public Vector2 position;
 
     // Start is called before the first frame update
     void Start()
@@ -55,22 +59,12 @@ public class Dynamite : MonoBehaviour
         if(exploaded == false)
         {
 
-
-
         burningSound.Play();
-
-
         explosionSound.PlayOneShot(explosionSound2);
-            
-        
         hasExploded = true;
-
         Explode();
-        
-        
+
         explosionParticle.Play();
-        
-        
         Invoke("DestroyObject", 0.3f);
             exploaded = true;
         }
@@ -83,26 +77,20 @@ public class Dynamite : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
-        
+    {   
         position = UnityEngine.Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+
         if (burning == true)
         {
             timer += Time.deltaTime;
             if (timer > 2)
             {
-
-                
-                
                 if (!hasExploded)
                 {
                     Explosion();
                 }
-                
             }
         }
-
-        
     }
     public void TotalStop()
     {
@@ -116,17 +104,9 @@ public class Dynamite : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("Enemy") && collider != null)
             {
-               
-
-                
-  
-
                 collider.GetComponent<cattle_tracking>().TakeDamage(damage);
-
-                
-               
-
             }
+
             if (collider.gameObject.CompareTag("Dynamite"))
             {
                 collider.GetComponent<Dynamite>().fuse.SetActive(true);
