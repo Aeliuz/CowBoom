@@ -7,15 +7,8 @@ public class DynamiteAbility : MonoBehaviour
 
     public GameObject Dynamite;
   
-
     public float fireRate;
-
     float timer;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -34,8 +27,6 @@ public class DynamiteAbility : MonoBehaviour
           
         }
 
-
-       
     }
 }
 
