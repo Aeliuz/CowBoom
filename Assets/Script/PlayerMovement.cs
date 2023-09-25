@@ -23,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frames
     void Update()
     {
+        MoveThePlayer();
+
+    }
+
+    private void MoveThePlayer()
+    {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
 
@@ -33,14 +39,14 @@ public class PlayerMovement : MonoBehaviour
 
         velocity += input * accelarate * Time.deltaTime;
 
-        if(velocity.sqrMagnitude > maxSpeed * maxSpeed) 
+        if (velocity.sqrMagnitude > maxSpeed * maxSpeed)
         {
             velocity.Normalize();
             velocity = velocity * maxSpeed;
 
         }
 
-        if(input .sqrMagnitude == 0)
+        if (input.sqrMagnitude == 0)
         {
             velocity *= 1 - deAccalarate * Time.deltaTime;
         }
@@ -49,11 +55,8 @@ public class PlayerMovement : MonoBehaviour
 
 
         rb2D.velocity = velocity;
-
-
-        
-
     }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.gameObject.name);

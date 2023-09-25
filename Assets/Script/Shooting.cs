@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-
+    [Header("Game Objects")]
     public GameObject bullet;
     public Transform player;
     public Transform mouse;
@@ -12,25 +12,23 @@ public class Shooting : MonoBehaviour
     public GameObject shooting;
     public GameObject shooting2;
     public GameObject shooting3;
-
-    AudioSource audioSource;
-
-    bool flipped;
-
     public GameObject shooting4;
     public GameObject shooting5;
 
-
-
+    [Header("Sound")]
     public AudioClip shootSound;
-    public AudioClip reload; 
-    
+    public AudioClip reload;
 
-
-
+    [Header("Animation")]
     public Animator NuzzleFlash;
 
+    [Header("FireRate")]
     public float fireRate = 3;
+
+    AudioSource audioSource;
+    
+    bool flipped;
+
 
     float timer;
     // Start is called before the first frame update
@@ -53,22 +51,18 @@ public class Shooting : MonoBehaviour
 
 
         FlipWeapon();
+        PlayerShooting();
+    }
 
+    private void PlayerShooting()
+    {
         if (Input.GetMouseButton(0) && timer > fireRate)
         {
 
-
             audioSource.PlayOneShot(shootSound);
             Invoke("waitForShooting", 0.4f);
-            
 
             NuzzleFlash.Play("Flash");
-
-
-            
-
-
-            
 
             Instantiate(bullet, shooting.transform.position, shooting.transform.rotation);
 
@@ -80,13 +74,8 @@ public class Shooting : MonoBehaviour
 
             Instantiate(bullet, shooting5.transform.position, shooting5.transform.rotation);
 
-
-
             timer = 0;
         }
-
-
-
 
         timer += Time.deltaTime;
     }
